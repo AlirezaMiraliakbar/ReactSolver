@@ -19,3 +19,4 @@ from ReactSolver import ReactorSolver
 solver = ReactorSolver(params={})
 solution = solver.solve_odes(odes, t_span, y0)
 ```
+## Validation
