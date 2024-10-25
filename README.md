@@ -1,4 +1,4 @@
-![ReactSolver Logo]([https://github.com/AlirezaMiraliakbar/ReactSolver/blob/main/docs/acc/logo.png])
+![ReactSolver Logo](https://github.com/AlirezaMiraliakbar/ReactSolver/blob/main/docs/acc/logo.png)
 
 # ReactSolver
 
