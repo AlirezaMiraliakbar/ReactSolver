@@ -1,6 +1,8 @@
-# My Package
+# ReactSolver
 
-This package solves ODEs for chemical reactor design.
+This package solves for chemical reactor design. The reactor models covered so far:
+- CSTR
+- PFR
 
 ## Installation
 ```bash
