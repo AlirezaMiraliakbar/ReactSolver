@@ -1,1 +1,1 @@
-from .reactor import ReactorSolver
+from .models import CSTR
