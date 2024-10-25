@@ -1,3 +1,5 @@
+![ReactSolver Logo](https://github.com/AlirezaMiraliakbar/ReactSolver/docs/acc/logo.png)
+
 # ReactSolver
 
 This package solves for chemical reactor design. The reactor models covered so far:
