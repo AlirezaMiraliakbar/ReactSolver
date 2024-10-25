@@ -7,19 +7,7 @@ This package solves for chemical reactor design. The reactor models covered so f
 - PFR
 
 ## Folder Structure
-Root Directory
-├── ReactSolver
-│   └── molebalance_init
-├── docs
-│   └── logo
-├── tests
-│   └── models init
-├── .DS_Store
-├── LICENSE
-├── README.md
-├── requirements.txt
-├── setup.py
-└── test_notebook.ipynb
+
 ## Installation
 ```bash
 pip install ReactSolver
