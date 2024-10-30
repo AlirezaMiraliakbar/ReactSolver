@@ -21,4 +21,4 @@ solution = solver.solve_odes(odes, t_span, y0)
 ```
 ## Verfication
 
-The models and mathematical methods used in ReactSolver are verified using commertial softwares of COMSOL Multiphysics^(C) v6.1 and MATLAB(C) R2022b
+The models and mathematical methods used in ReactSolver are verified using commertial softwares of COMSOL Multiphysics &copy v6.1 and MATLAB &copy R2022b
