@@ -3,81 +3,6 @@ from scipy.optimize import curve_fit
 from scipy.stats import linregress, t
 import matplotlib.pyplot as plt
 
-class RateDataAnalyser:
-    def __init__(self, time, concentration):
-        """
-        Initialize with time and concentration data.
-        
-        Parameters:
-        - time (array-like): Time data points.
-        - concentration (array-like): Concentration data points corresponding to the time data.
-        """
-        self.time = np.array(time)
-        self.concentration = np.array(concentration)
-
-    def polynomial_fit(self, degree):
-        """
-        Fit a polynomial of a specified degree to the rate data.
-        
-        Parameters:
-        - degree (int): The degree of the polynomial to fit.
-        
-        Returns:
-        - coefficients (array): Coefficients of the fitted polynomial, starting with the highest degree.
-        """
-        coefficients = np.polyfit(self.time, self.concentration, degree)
-        return coefficients
-        
-    def linear_regression(self, log_form = False):
-        """
-        Perform linear regression on the rate data assuming a linear rate law.
-        log_form: If the given rate data are in ln(-rA) = ln k + n ln (CA) - Default: False
-        Returns:
-        - slope (float): The slope of the best-fit line.
-        - intercept (float): The intercept of the best-fit line.
-        - r_value (float): The correlation coefficient.
-        """
-        if log_form:
-            
-        slope, intercept, r_value, _, _ = linregress(self.time, self.concentration)
-        return slope, intercept, r_value
-    
-    def nonlinear_regression(self, model_func, initial_guess):
-        """
-        Perform nonlinear regression on the rate data given a model function.
-        
-        Parameters:
-        - model_func (callable): The model function, such as for fractional order or exponential kinetics.
-        - initial_guess (array-like): Initial guess for the parameters in the model function.
-        
-        Returns:
-        - params (array): Optimal values for the parameters in model_func.
-        - covariance (2D array): Covariance of params.
-        """
-        params, covariance = curve_fit(model_func, self.time, self.concentration, p0=initial_guess)
-        return params, covariance
-
-    def plot_results(self, model_func=None, params=None):
-        """
-        Plot the concentration data and optionally the fitted model.
-        
-        Parameters:
-        - model_func (callable): The model function used in nonlinear regression.
-        - params (array): Parameters of the model function for plotting the fitted curve.
-        """
-        plt.scatter(self.time, self.concentration, color='blue', label='Data')
-        
-        if model_func and params is not None:
-            fitted_concentration = model_func(self.time, *params)
-            plt.plot(self.time, fitted_concentration, color='red', label='Fitted Model')
-        
-        plt.xlabel("Time")
-        plt.ylabel("Concentration")
-        plt.legend()
-        plt.show()
-
-
-
 class PolyFit:
     def __init__(self):
         pass
@@ -372,5 +297,54 @@ class NonLinFit():
         
         plt.xlabel("Concentration")
         plt.ylabel("Rate")
+        plt.legend()
+        plt.show()
+
+class InitialRate():
+    def __init__(self):
+        pass
+
+    def fit(self, x, y):
+        """
+        Fit a linear model to the initial rate data.
+        
+        Parameters:
+        - x (array-like): Concentration data points.
+        - y (array-like): Initial rate data points corresponding to the concentration data.
+        
+        Returns:
+        - rate_constant (float): The rate constant for the reaction.
+        - intercept (float): Intercept of the best-fit line.
+        """
+        slope, intercept, r_value, _, _ = linregress(x, y)
+        rate_constant = slope
+        return rate_constant, intercept
+
+    def predict(self, x):
+        """
+        Predict the initial rate based on the fitted linear model.
+        
+        Parameters:
+        - x (array-like): Concentration data points to predict the initial rate for.
+        
+        Returns:
+        - y (array): Predicted initial rate values.
+        """
+        y = self.rate_constant * x + self.intercept
+        return y
+
+    def plot(self, x, y):
+        """
+        Plot the initial rate data and the fitted linear model.
+        
+        Parameters:
+        - x (array-like): Concentration data points.
+        - y (array-like): Initial rate data points corresponding to the concentration data.
+        """
+        plt.scatter(x, y, color='blue', label='Data')
+        plt.plot(x, self.predict(x), color='red', label='Fitted Model')
+        
+        plt.xlabel("Concentration")
+        plt.ylabel("Initial Rate")
         plt.legend()
         plt.show()
