@@ -19,4 +19,6 @@ from ReactSolver import ReactorSolver
 solver = ReactorSolver(params={})
 solution = solver.solve_odes(odes, t_span, y0)
 ```
-## Validation
+## Verfication
+
+The models and mathematical methods used in ReactSolver are verified using commertial softwares of COMSOL Multiphysics^(C) v6.1 and MATLAB(C) R2022b
